@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2019 Google Inc.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,28 +15,38 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.treasureHunt">
+	package="com.example.android.treasureHunt">
 
-<!--    TODO: Step 1 add in permissions for fine location and background-->
+	<!--    TODO: Step 1 add in permissions for fine location and background [DONE]-->
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+	<!--
+		The FINE_LOCATION permission is required for geofencing functionality to work.
+	-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<!--
+		The BACKGROUND_LOCATION permission is required for geofencing functionality to work on Q+
+	-->
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-        <activity android:name=".HuntMainActivity"
-            android:label="@string/title_activity_hunt"
-            android:launchMode="singleInstance">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <receiver android:name=".GeofenceBroadcastReceiver"/>
-    </application>
+		<activity
+			android:name=".HuntMainActivity"
+			android:label="@string/title_activity_hunt"
+			android:launchMode="singleInstance">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<receiver android:name=".GeofenceBroadcastReceiver" />
+	</application>
 
 </manifest>
